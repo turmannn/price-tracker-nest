@@ -6,7 +6,7 @@ import {ProductProcessed} from "./interfaces/product.interface";
 export class PricesController {
     constructor(private readonly pricesService: PricesService) {}
 
-    @Get
+    @Get()
     test(): string {
         return 'test'
     }
