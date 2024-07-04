@@ -6,12 +6,14 @@ import {NoAuth} from "./auth/public.decorator";
 import {PassportLocalAuthGuard} from "./auth-passport/local-auth.guard";
 import {AuthPassportLocalService} from "./auth-passport/auth-passport.service";
 import {JwtAuthGuard} from "./auth-passport/jwt-auth.guard";
+import {NO_PASSPORT_LOCAL_AUTH, noPassportLocalAuth} from "./auth-passport/public-route.decorator";
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService, private authService: AuthPassportLocalService) {}
 
   @NoAuth()
+  @noPassportLocalAuth()
   @Get()
   getHello(): string {
     return this.appService.getHello();
