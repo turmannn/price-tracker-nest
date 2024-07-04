@@ -2,12 +2,14 @@ import {Body, Controller, Get, Post, HttpCode, HttpStatus, Request, UseGuards} f
 import { AuthService } from './auth.service';
 import {LoginUserDto} from "../users/dto/login-user.dto";
 import {AuthGuard} from "./auth.guard";
+import {Public} from "./public.decorator";
 
 @Controller('auth')
 export class AuthController {
     constructor(private authService: AuthService) {}
 
     // TODO: Ideally, instead of using the Record<string, any> type, we should use a DTO class to define the shape of the request body. See the validation chapter for more information.
+    @Public()
     @HttpCode(HttpStatus.OK)
     @Post('login')
     // signIn(@Body() signInDto: Record<string, any>) {
@@ -17,7 +19,7 @@ export class AuthController {
         return this.authService.signIn(signInDto.email, signInDto.password);
     }
 
-    @UseGuards(AuthGuard)
+    // @UseGuards(AuthGuard)
     @Get('profile')
     getProfile(@Request() req) {
         return req.user;
