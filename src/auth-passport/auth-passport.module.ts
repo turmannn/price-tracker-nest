@@ -10,19 +10,19 @@ import {JwtAuthGuard} from "./jwt-auth.guard";
 
 @Module({
   imports: [
-      UsersModule,
-      PassportModule,
-      JwtModule.register({
-        secret: jwtConstants.secret,
-        signOptions: { expiresIn: '60s' },
-      })
+    UsersModule,
+    PassportModule,
+    JwtModule.register({
+      secret: jwtConstants.secret,
+      signOptions: { expiresIn: '60s' },
+    }),
   ],
   providers: [
-      AuthPassportLocalService,
-      LocalStrategy,
-      JwtStrategy,
-      { provide: 'APP_GUARD', useClass: JwtAuthGuard }, // bind AuthGuard to all endpoints}
+    AuthPassportLocalService,
+    LocalStrategy,
+    JwtStrategy,
+    { provide: 'APP_GUARD', useClass: JwtAuthGuard }, // bind AuthGuard to all endpoints}
   ],
-  exports: [AuthPassportLocalService]
+  exports: [AuthPassportLocalService],
 })
 export class AuthPassportModule {}

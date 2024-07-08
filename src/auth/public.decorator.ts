@@ -1,4 +1,4 @@
 import { SetMetadata } from '@nestjs/common';
 
-export const IS_PUBLIC_KEY = 'isPublic';
-export const NoAuth = () => SetMetadata(IS_PUBLIC_KEY, true);
+export const KEY_SKIP_AUTH = 'skip-auth';
+export const skipAuth = () => SetMetadata(KEY_SKIP_AUTH, true);

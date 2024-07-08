@@ -8,14 +8,14 @@ import { JwtService } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { Request } from 'express';
 import {Reflector} from "@nestjs/core";
-import {IS_PUBLIC_KEY} from "./public.decorator";
+import {KEY_SKIP_AUTH} from "./public.decorator";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
     constructor(private jwtService: JwtService, private reflector: Reflector) {}
 
     async canActivate(context: ExecutionContext): Promise<boolean> {
-        const isPublic = this.reflector.getAllAndOverride(IS_PUBLIC_KEY, [
+        const isPublic = this.reflector.getAllAndOverride(KEY_SKIP_AUTH, [
             context.getHandler(),
             context.getClass(),
         ]);
