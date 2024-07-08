@@ -1,4 +1,5 @@
 import { SetMetadata } from '@nestjs/common';
 
-export const NO_PASSPORT_LOCAL_AUTH = 'no-passport-local-auth';
-export const noPassportLocalAuth = () => SetMetadata(NO_PASSPORT_LOCAL_AUTH, true);
+export const KEY_SKIP_PASSPORT_LOCAL_AUTH = 'skip-passport-local-auth';
+export const skipPassportLocalAuth = () =>
+  SetMetadata(KEY_SKIP_PASSPORT_LOCAL_AUTH, true);

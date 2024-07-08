@@ -1,6 +1,6 @@
 curl http://localhost:3000/profile
 
-curl -X POST http://localhost:3000/auth-passport-local/login -d '{"username": "john", "password": "changeme"}' -H "Content-Type: application/json"
+curl -X POST http://localhost:3000/auth-passport-local/login -d '{"username": "", "password": ""}' -H "Content-Type: application/json"
 
 curl http://localhost:3000/profile -H "Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5..."
 
